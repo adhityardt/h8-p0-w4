@@ -1,0 +1,51 @@
+function changeVocals (str) {
+  let hasil = '';
+  for (var i = 0; i < str.length; i++) {
+    let strToNum = (str[i].charCodeAt(0) - 97)+1;
+    hasil += String.fromCharCode(97 + strToNum);
+  }
+  return hasil;
+}
+
+function reverseWord (str) {
+  let hasil = '';
+  for (var i = str.length - 1; i < str.length; i--) {
+    hasil += str[i];
+  }
+  return hasil;
+}
+
+function setLowerUpperCase (str) {
+  let hasil = '';
+  for (var i = 0; i < kalimat.length; i++) {
+    if (kalimat[i] === kalimat[i].toUpperCase()) {
+      hasil += kalimat[i].toLowerCase()
+    } else {
+      hasil += kalimat[i].toUpperCase()
+    }
+  }
+  return hasil;
+}
+
+function removeSpaces (str) {
+  let hasil = '';
+  let splitStr = str.split(' ');
+  for (var i = 0; i < splitStr.length; i++) {
+    hasil += splitStr[i];
+  }
+  return hasil;
+}
+
+function passwordGenerator (name) {
+  let vocalsChange = changeVocals(name);
+  let wordReverse = reverseWord(vocalsChange);
+  let lowerUpperCase = setLowerUpperCase(wordReverse);
+  let spacesRemove = removeSpaces(lowerUpperCase);
+  return spacesRemove;
+}
+
+console.log(passwordGenerator('Sergei Dragunov')); // 'VPNVGBRdJFGRFs'
+console.log(passwordGenerator('Dimitri Wahyudiputra')); // 'BRTVPJDVYHBwJRTJMJd'
+console.log(passwordGenerator('Alexei')); // 'JFXFLb'
+console.log(passwordGenerator('Alex')); // 'Minimal karakter yang diinputkan adalah 5 karakter'
+
